@@ -1,5 +1,4 @@
 # Autor: Matias Rojas Arias
-#
 # Test para validar inicio se sesión
 Feature: Valida comportamiento de registros de clientes/usuario
 
@@ -14,5 +13,5 @@ Feature: Valida comportamiento de registros de clientes/usuario
     Then Realizo registro exitoso de usuario
 
     Examples:
-      | nombres            | appPaterno | appMaterno | rut       | alias | clave | repetirClave | direccion       | ciudad    | telefono1 | telefono2 | region | comuna | correo1 | correo2 | urlWeb |
-      | matias juan carlos | rojas      | arias      | 175553878 | mati  | 1234  | 1234         | san adolfo 2913 | Melipilla |           |           |        |        |         |         |        |
+      | nombres            | appPaterno | appMaterno | rut       | alias | clave | repetirClave | direccion       | ciudad     | telefono1 | telefono2 | region | comuna | correo1 | correo2 | urlWeb |
+      | matias juan carlos | rojas      | arias      | 175553878 | mati  | 1234  | 1234         | san adolfo 2913 | number:1023 |           |           |        |        |         |         |        |

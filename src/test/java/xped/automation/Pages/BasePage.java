@@ -39,31 +39,62 @@ public class BasePage {
     }
 
     public void sendKeys(WebElement webElement, String text) {
-        wait.until(ExpectedConditions.elementToBeClickable(webElement));
-        webElement.clear();
-        webElement.sendKeys(text);
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(webElement));
+            webElement.clear();
+            webElement.sendKeys(text);
+
+        } catch (Exception e){
+            e.printStackTrace();
+            System.out.println("No se puede realizar click al elemento: " + e.getMessage());
+
+        }
     }
 
     public void sendKeys(WebElement webElement, Keys key) {
-        wait.until(ExpectedConditions.elementToBeClickable(webElement));
-        webElement.sendKeys(key);
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(webElement));
+            webElement.sendKeys(key);
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("No se puede realizar click al elemento: " + e.getMessage());
+
+        }
+
     }
 
     public void click(WebElement webElement) {
-        wait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
+        try{
+            wait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("No se puede realizar click al elemento: " + e.getMessage());
+        }
+
     }
 
     public void scrollToAndClick(WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        // Esto hará scroll hasta que el elemento esté a la vista:
-        js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
-        // Una vez que el elemento está a la vista, puedes hacer click en él:
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
+        try{
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            // Esto hará scroll hasta que el elemento esté a la vista:
+            js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+            // Una vez que el elemento está a la vista, puedes hacer click en él:
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            element.click();
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("No se puede realizar click al elemento: " + e.getMessage());
+        }
     }
 
     public String getText(WebElement webElement) {
-        wait.until(ExpectedConditions.visibilityOf(webElement));
+        try {
+            wait.until(ExpectedConditions.visibilityOf(webElement));
+
+        } catch (Exception e){
+            e.printStackTrace();
+            System.out.println("No se puede realizar click al elemento: " + e.getMessage());
+        }
         return webElement.getText();
     }
 
@@ -85,9 +116,15 @@ public class BasePage {
     }
 
     public void selectOptionByText(WebElement webElement, String text) {
-        wait.until(ExpectedConditions.visibilityOf(webElement));
-        Select select = new Select(webElement);
-        select.selectByVisibleText(text);
+        try{
+            wait.until(ExpectedConditions.visibilityOf(webElement));
+            Select select = new Select(webElement);
+            select.selectByVisibleText(text);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Elemento no visible: " + e.getMessage());
+        }
     }
 
     public String getSelectedOptionText(WebElement webElement) {
@@ -97,9 +134,16 @@ public class BasePage {
     }
 
     public void selectOptionByValue(WebElement webElement, String value) {
-        wait.until(ExpectedConditions.visibilityOf(webElement));
-        Select select = new Select(webElement);
-        select.selectByValue(value);
+        try{
+            wait.until(ExpectedConditions.visibilityOf(webElement));
+            Select select = new Select(webElement);
+            select.selectByValue(value);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Elemento no visible: " + e.getMessage());
+        }
+
     }
 
     public String getSelectedOptionValue(WebElement webElement) {

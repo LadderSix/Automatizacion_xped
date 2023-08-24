@@ -24,16 +24,19 @@ public class WebDriverFactory {
 
         switch (webDriver) {
             case "firefox" -> {
+                System.out.println("Se seleccionar Firefox");
                 IWebDriver firefoxDriver = new FirefoxWebDriver();
                 tlDriver.set(firefoxDriver.setUpWebDriver());
                 return getDriver();
             }
             case "chrome" -> {
+                System.out.println("Se seleccionar chrome");
                 IWebDriver chromeDriver = new ChromeWebDriver();
                 tlDriver.set(chromeDriver.setUpWebDriver());
                 return getDriver();
             }
             case "ie" -> {
+                System.out.println("Se seleccionar Internet Explorer");
                 IWebDriver ieDriver = new InternetExplorerWebDriver();
                 tlDriver.set(ieDriver.setUpWebDriver());
                 return getDriver();

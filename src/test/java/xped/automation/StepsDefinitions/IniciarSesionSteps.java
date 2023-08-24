@@ -1,19 +1,21 @@
 package xped.automation.StepsDefinitions;
 
-import xped.automation.Pages.HomePagePO;
+import xped.automation.Pages.BasePage;
+import xped.automation.Pages.HomePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import xped.automation.util.PropertyReader;
 
 public class IniciarSesionSteps {
 
 
-    HomePagePO homePagePO = new HomePagePO();
+    HomePage homePagePO = new HomePage();
 
     @Given("Ingreso a ambiente")
     public void ingresoAAmbiente(){
-        homePagePO.abrirWeb();
+        homePagePO.navigateToUrl(PropertyReader.getProperty("url"));
     }
 
     @When("Presiono en opcion usuario")
@@ -23,7 +25,7 @@ public class IniciarSesionSteps {
 
     @When("Ingreso al formulario de registro")
     public void ingresoAlFormularioDeRegistro(){
-        homePagePO.btnRegistrarCliente();
+        homePagePO.navigateToUrl(PropertyReader.getProperty("urlRegistro"));
     }
 
     @And("Ingreso mis credenciales {} y {}")
