@@ -41,8 +41,8 @@ public class BasePage {
     public void sendKeys(WebElement webElement, String text) {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(webElement));
-            webElement.clear();
             webElement.sendKeys(text);
+            System.out.println("Datos enviados: " + text);
 
         } catch (Exception e){
             e.printStackTrace();
@@ -55,12 +55,12 @@ public class BasePage {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.sendKeys(key);
+            System.out.println("Datos enviados: " + key);
         }catch (Exception e){
             e.printStackTrace();
             System.out.println("No se puede realizar click al elemento: " + e.getMessage());
 
         }
-
     }
 
     public void click(WebElement webElement) {
@@ -248,8 +248,15 @@ public class BasePage {
     }
 
     public static void actionClick(WebElement element, WebDriver driver) {
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element).click().perform();
+        try{
+            Actions actions = new Actions(driver);
+            actions.moveToElement(element).click().perform();
+            System.out.println("Click Realizado!");
+        } catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Elemento no disponble para realizar click: " + e.getMessage());
+        }
+
     }
 
     public static void actionMoveMouse(WebElement element, WebDriver driver) {

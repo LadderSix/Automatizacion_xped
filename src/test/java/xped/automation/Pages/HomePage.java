@@ -29,30 +29,23 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//a[@id='codigo_pagina_a']")
     private WebElement btnCodigoPagina;
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Cliente')]")
+    @FindBy(how = How.NAME, using = "ingresarCliente")
     private WebElement btnIngresarAdmin;
 
-    @FindBy(how = How.XPATH, using = "//a[@name=\"registrarCliente\"]")
+    @FindBy(how = How.XPATH, using = "//button[@name=\"registrarCliente\"]")
     private WebElement btnRegistrarPersona;
-
-
 
     public void ingresoCredenciales(String username, String password){
         sendKeys(inputUsername, username);
         sendKeys(inputPassword, password);
-
-        System.out.println("credenciales ok");
     }
 
     public void seleccionarOpcionUsuario(){
-
+        waitForElementToBeClickable(btnUsuario,this.wait);
+        actionClick(btnUsuario,this.driver);
     }
 
     public void btnIngresarAdmin(){
-
-    }
-
-    public void btnRegistrarCliente(){
-        navigateToUrl(PropertyReader.getProperty("urlRegistro"));
+        click(btnIngresarAdmin);
     }
 }

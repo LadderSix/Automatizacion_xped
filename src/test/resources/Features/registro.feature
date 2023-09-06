@@ -6,10 +6,10 @@ Feature: Valida comportamiento de registros de clientes/usuario
   Scenario Outline: Registro de cliente exitoso
     Given Ingreso a ambiente
     When Ingreso al formulario de registro
-    And Ingreso datos Formulario Parte 1 <nombres>,<appPaterno>,<appMaterno>,<rut>
-    And Realizo carga de documentos
-    And Ingreso datos Formulario Parte 2 <alias>,<clave>,<repetirClave>
-    And Ingreso datos Representante <direccion>,<ciudad>
+    #And Ingreso datos Identificacion Cliente <nombres>,<appPaterno>,<appMaterno>,<rut>
+    #And Realizo carga de documentos
+    #And Ingreso datos Identificacion Cliente Parte 2 <alias>,<clave>,<repetirClave>
+    And Ingreso datos Ubicacion Cliente <direccion>,<ciudad>
     Then Realizo registro exitoso de usuario
 
     Examples:

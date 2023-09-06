@@ -12,7 +12,7 @@ import xped.automation.StepsDefinitions.Hooks;
         plugin = {"pretty","html:test-output"},
         dryRun = false,
         monochrome = (true),
-        tags = ""
+        tags = "@test"
 )
 public class Runners extends Hooks {
 

@@ -9,7 +9,7 @@ public class RegistroSteps {
 
     Registro registroPO = new Registro();
 
-    @And("Ingreso datos Formulario Parte 1 {},{},{},{}")
+    @And("Ingreso datos Identificacion Cliente {},{},{},{}")
     public void ingresoDatosFormularioParteUno(String nombres, String appPaterno, String appMaterno, String rut) {
         registroPO.ingresarNombres(nombres);
         registroPO.ingresaAppPaterno(appPaterno);
@@ -17,7 +17,7 @@ public class RegistroSteps {
         registroPO.ingresarRut(rut);
     }
 
-    @And("Ingreso datos Formulario Parte 2 {},{},{}")
+    @And("Ingreso datos Identificacion Cliente Parte 2 {},{},{}")
     public void ingresoDatosFormularioParteDos(String alias, String clave, String repetirClave) {
         registroPO.ingresarAlias(alias);
         registroPO.ingresarClaveSecreta(clave);
@@ -29,7 +29,7 @@ public class RegistroSteps {
         registroPO.cargarAdjuntoCedulaIdentidad_y_DocumentoRut();
     }
 
-    @And("Ingreso datos Representante {},{}")
+    @And("Ingreso datos Ubicacion Cliente {},{}")
     public void ingresoDatosRepresentante(String direccion, String ciudad){
         registroPO.ingresarDireccion(direccion);
         registroPO.seleccionarCiudad(ciudad);

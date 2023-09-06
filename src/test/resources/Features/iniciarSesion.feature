@@ -1,7 +1,7 @@
 # Autor: Matias Rojas Arias
-#
 # Test para validar inicio se sesión
 Feature: Valida comportamiento de inicio de sesion
+
   @test
   Scenario Outline: Inicio de sesion exitoso
     Given Ingreso a ambiente

@@ -1,6 +1,5 @@
 package xped.automation.StepsDefinitions;
 
-import xped.automation.Pages.BasePage;
 import xped.automation.Pages.HomePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -35,6 +34,7 @@ public class IniciarSesionSteps {
 
     @Then("Accedo con exito al ambiente")
     public void accedoConExitoAlAmbiente(){
+
         homePagePO.btnIngresarAdmin();
     }
 }

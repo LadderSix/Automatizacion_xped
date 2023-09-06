@@ -11,80 +11,79 @@ import java.util.List;
 
 public class Registro extends BasePage {
 
-    @FindBy(how = How.XPATH, using = "//input[@id='rolUsuario']")
+    // Elementos Seccion Identificacion Cliente
+    @FindBy(how = How.ID, using = "rolUsuario")
     private WebElement inputRut;
 
-    @FindBy(how = How.XPATH, using = "//input[@id='nombre']")
+    @FindBy(how = How.ID, using = "nombre")
     private WebElement inputNombres;
 
-    @FindBy(how = How.XPATH, using = "//input[@id='apellidoPaterno']")
+    @FindBy(how = How.ID, using = "apellidoPaterno")
     private WebElement inputApellidoPaterno;
 
-    @FindBy(how = How.XPATH, using = "//input[@id='apellidoMaterno']")
+    @FindBy(how = How.ID, using = "apellidoMaterno")
     private WebElement inputApellidoMaterno;
 
-    @FindBy(how = How.XPATH, using = "//select[@name='idClasePerfilCliente']")
+    @FindBy(how = How.ID, using = "ClasePerfilCliente")
     private WebElement listaTipoCliente;
 
-    @FindBy(how = How.XPATH, using = "//a[@id='loadFileXmlIdentidad']")
-    private WebElement loadFileCedulaIdentidad;
-
-    @FindBy(how = How.XPATH, using = "//input[@id='documentoIdentidad']")
-    private WebElement btnCargarCedula;
-
-    @FindBy(how = How.XPATH, using = "//a[@id='loadFileXmlRut']")
-    private WebElement loadFileRut;
-
-    @FindBy(how = How.XPATH, using = "//input[@id='documentoRut']")
-    private WebElement btnCargarRut;
-
-    @FindBy(how = How.XPATH, using = "//input[@id='alias']")
+    @FindBy(how = How.ID, using = "alias")
     private WebElement inputAlias;
 
-    @FindBy(how = How.XPATH, using = "//input[@id='claveUsuario']")
+    @FindBy(how = How.ID, using = "claveUsuario")
     private WebElement inputClaveSecreta;
 
-    @FindBy(how = How.XPATH, using = "//input[@id='claveUsuario2']")
+    @FindBy(how = How.ID, using = "claveUsuario2")
     private WebElement inputRepetirClaveSecreta;
 
-    @FindBy(how = How.XPATH, using = "//img[@id='imagen-representante']")
+    @FindBy(how = How.ID, using = "imagen-representante")
     private WebElement imgRepresentante;
 
-    @FindBy(how = How.XPATH, using = "//input[@id='direccionUsuario']")
+    // Elementos Sección Cargar de archivos adjuntos
+
+    @FindBy(how = How.ID, using = "documentoIdentidad")
+    private WebElement btnCargarCedula;
+
+    @FindBy(how = How.ID, using = "documentoRut")
+    private WebElement btnCargarRut;
+
+    @FindBy(how = How.ID, using = "imagen-representante-src")
+    private WebElement btnImgRepresentante;
+
+    @FindBy(how = How.ID, using = "documentoUsuario")
+    private WebElement btnDocumentoUsuario;
+
+    // Elementos Sección Ubicación cliente
+
+    @FindBy(how = How.ID, using = "direccionUsuario")
     private WebElement inputDireccion;
 
     @FindBy(how = How.ID, using = "ciudadUsuario")
     private WebElement listaCiudad;
 
-    @FindBy(how = How.XPATH, using = "//input[@id='telefonoUsuario']")
+    @FindBy(how = How.XPATH, using = "//div[@class=\"field\"]//child::select[@id=\"ciudadUsuario\"]")
+    private WebElement selectCiudad;
+
+    @FindBy(how = How.ID, using = "telefonoUsuario")
     private WebElement inputTelefono1;
 
-    @FindBy(how = How.XPATH, using = "//input[@id='telefonoOtroUsuario']")
+    @FindBy(how = How.ID, using = "telefonoOtroUsuario")
     private WebElement inputTelefono2;
 
-    @FindBy(how = How.XPATH, using = "//select[@id='regionUsuario']")
+    @FindBy(how = How.ID, using = "regionUsuario")
     private WebElement listaRegion;
 
-    @FindBy(how = How.XPATH, using = "//select[@id='comunaUsuario']")
+    @FindBy(how = How.ID, using = "comunaUsuario")
     private WebElement listaComuna;
 
-    @FindBy(how = How.XPATH, using = "//input[@id='correoUsuario']")
+    @FindBy(how = How.ID, using = "correoUsuario")
     private WebElement inputCorreo;
 
-    @FindBy(how = How.XPATH, using = "//input[@id='correoOtroUsuario']")
+    @FindBy(how = How.ID, using = "correoOtroUsuario")
     private WebElement inputCorreo2;
 
-    @FindBy(how = How.XPATH, using = "//input[@name='urlCliente']")
+    @FindBy(how = How.NAME, using = "urlCliente")
     private WebElement inputURLSitio;
-
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Registrar')]")
-    private WebElement btnRegistrarPersona;
-
-    @FindBy(how = How.XPATH, using = "//img[@id='imagen-representante-src']")
-    private WebElement btnImgRepresentante;
-
-    @FindBy(how = How.XPATH, using = "//input[@id='documentoUsuario']")
-    private WebElement btnDocumentoUsuario;
 
 
     public void ingresarNombres(String nombres){
@@ -114,6 +113,12 @@ public class Registro extends BasePage {
         esperar(3);
     }
 
+    public void subirImagenRepresentante() {
+        actionClick(btnImgRepresentante, this.driver);
+        btnDocumentoUsuario.sendKeys("C:\\Users\\matias.rojas\\OneDrive - TSOFT\\Documentos\\Automaton_TestUploadsFiles\\foto.jpg");
+
+    }
+
     public void ingresarAlias(String alias) {
         sendKeys(inputAlias,alias);
         esperar(3);
@@ -135,9 +140,8 @@ public class Registro extends BasePage {
     }
 
     public void seleccionarCiudad(String ciudad) {
+        selectOptionByValue(selectCiudad,ciudad);
 
-        selectOptionByValue(listaCiudad,ciudad);
-        esperar(3);
     }
 
 }
