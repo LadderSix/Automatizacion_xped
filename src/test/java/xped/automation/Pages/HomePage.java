@@ -1,15 +1,24 @@
 package xped.automation.Pages;
 
-
-import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import xped.automation.util.PropertyReader;
+import org.openqa.selenium.support.PageFactory;
+import xped.automation.driverConfig.DriverContext;
+import xped.automation.util.MetodosGenericos;
 
 import java.util.List;
 
-public class HomePage extends BasePage {
+public class HomePage {
+
+    private WebDriver driver;
+
+    public HomePage(){
+        this.driver = DriverContext.getDriver();
+        PageFactory.initElements(this.driver, this);
+
+    }
 
     @FindBy(how = How.XPATH, using = "//body/div[4]")
     private List<WebElement> header;
@@ -20,32 +29,33 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Usuario')]")
     private WebElement btnUsuario;
 
-    @FindBy(how = How.XPATH, using = "//input[@id='rolUsuarioAdmin']")
+    @FindBy(how = How.XPATH, using = "//*[@id='rolUsuarioAdmin']")
     private WebElement inputUsername;
 
-    @FindBy(how = How.XPATH, using = "//input[@id='claveUsuarioAdmin']")
+    @FindBy(how = How.XPATH, using = "//*[@id='claveUsuarioAdmin']")
     private WebElement inputPassword;
 
     @FindBy(how = How.XPATH, using = "//a[@id='codigo_pagina_a']")
     private WebElement btnCodigoPagina;
 
-    @FindBy(how = How.NAME, using = "ingresarCliente")
+    @FindBy(how = How.XPATH, using = "//button[@ng-click='ingresarCliente()']")
     private WebElement btnIngresarAdmin;
 
-    @FindBy(how = How.XPATH, using = "//button[@name=\"registrarCliente\"]")
+    @FindBy(how = How.XPATH, using = "//a[@name='registrarCliente']")
     private WebElement btnRegistrarPersona;
 
     public void ingresoCredenciales(String username, String password){
-        sendKeys(inputUsername, username);
-        sendKeys(inputPassword, password);
+        MetodosGenericos.accionSenkeys(inputUsername, username);
+        MetodosGenericos.accionSenkeys(inputPassword,password);
     }
 
     public void seleccionarOpcionUsuario(){
-        waitForElementToBeClickable(btnUsuario,this.wait);
-        actionClick(btnUsuario,this.driver);
+        //MetodosGenericos.waitExplicitToBeClicleable(btnUsuario, 10);
+        MetodosGenericos.accionClick(btnUsuario);
     }
 
     public void btnIngresarAdmin(){
-        click(btnIngresarAdmin);
+        MetodosGenericos.validarEstadoBotones(btnIngresarAdmin);
+        MetodosGenericos.accionClick(btnIngresarAdmin);
     }
 }

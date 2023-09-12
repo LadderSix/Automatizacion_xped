@@ -1,15 +1,25 @@
 package xped.automation.Pages;
 
-import org.openqa.selenium.ElementNotInteractableException;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.Select;
-import xped.automation.util.PropertyReader;
+import org.openqa.selenium.support.PageFactory;
+import xped.automation.driverConfig.DriverContext;
+import xped.automation.util.MetodosGenericos;
+
 
 import java.util.List;
 
-public class Registro extends BasePage {
+public class Registro{
+    private WebDriver driver;
+
+    public Registro(){
+        this.driver = DriverContext.getDriver();
+        PageFactory.initElements(this.driver, this);
+
+    }
 
     // Elementos Seccion Identificacion Cliente
     @FindBy(how = How.ID, using = "rolUsuario")
@@ -87,60 +97,56 @@ public class Registro extends BasePage {
 
 
     public void ingresarNombres(String nombres){
-        sendKeys(inputNombres,nombres);
-        esperar(3);
+        MetodosGenericos.accionSenkeys(inputNombres,nombres);
+
     }
 
     public void ingresaAppPaterno(String appPaterno){
-        sendKeys(inputApellidoPaterno,appPaterno);
-        esperar(3);
+        MetodosGenericos.accionSenkeys(inputApellidoPaterno,appPaterno);
     }
 
     public void ingresaAppMaterno(String appMaterno){
-        sendKeys(inputApellidoMaterno,appMaterno);
-        esperar(3);
+        MetodosGenericos.accionSenkeys(inputApellidoMaterno,appMaterno);
     }
 
     public void ingresarRut(String rut){
-        sendKeys(inputRut,rut);
-        esperar(3);
+        MetodosGenericos.accionSenkeys(inputRut,rut);
+
     }
 
     public void cargarAdjuntoCedulaIdentidad_y_DocumentoRut() {
         btnCargarCedula.sendKeys("C:\\Users\\matias.rojas\\OneDrive - TSOFT\\Documentos\\Automaton_TestUploadsFiles\\foto.jpg");
-        esperar(3);
+
         btnCargarRut.sendKeys("C:\\Users\\matias.rojas\\OneDrive - TSOFT\\Documentos\\Automaton_TestUploadsFiles\\foto.jpg");
-        esperar(3);
+
     }
 
     public void subirImagenRepresentante() {
-        actionClick(btnImgRepresentante, this.driver);
+        MetodosGenericos.accionClick(btnImgRepresentante);
         btnDocumentoUsuario.sendKeys("C:\\Users\\matias.rojas\\OneDrive - TSOFT\\Documentos\\Automaton_TestUploadsFiles\\foto.jpg");
 
     }
 
     public void ingresarAlias(String alias) {
-        sendKeys(inputAlias,alias);
-        esperar(3);
+        MetodosGenericos.accionSenkeys(inputAlias,alias);
+
     }
 
     public void ingresarClaveSecreta(String clave) {
-        sendKeys(inputClaveSecreta,clave);
-        esperar(3);
+        MetodosGenericos.accionSenkeys(inputClaveSecreta,clave);
     }
 
     public void ingresarRepetirClaveSecreta(String repClave) {
-        sendKeys(inputRepetirClaveSecreta,repClave);
-        esperar(3);
+        MetodosGenericos.accionSenkeys(inputRepetirClaveSecreta,repClave);
     }
 
     public void ingresarDireccion(String direccion) {
-        sendKeys(inputDireccion,direccion);
-        esperar(3);
+        MetodosGenericos.accionSenkeys(inputDireccion,direccion);
     }
 
     public void seleccionarCiudad(String ciudad) {
-        selectOptionByValue(selectCiudad,ciudad);
+        MetodosGenericos.selectOptionByValue(listaCiudad,ciudad);
+
 
     }
 
