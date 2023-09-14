@@ -1,10 +1,13 @@
 # Autor: Matias Rojas Arias
-# Test para validar inicio se sesión
+# Test para validar registro de cliente
 Feature: Valida comportamiento de registros de clientes/usuario
 
-  @test
-  Scenario Outline: Registro de cliente exitoso
+  Background: Ingresar a Web XPED
     Given Ingreso a ambiente
+
+  @test-02
+  Scenario Outline: Registro de cliente exitoso
+
     When Ingreso al formulario de registro
     #And Ingreso datos Identificacion Cliente <nombres>,<appPaterno>,<appMaterno>,<rut>
     #And Realizo carga de documentos

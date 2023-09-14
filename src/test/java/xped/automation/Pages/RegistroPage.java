@@ -4,95 +4,92 @@ package xped.automation.Pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import xped.automation.driverConfig.DriverContext;
 import xped.automation.util.MetodosGenericos;
 
+public class RegistroPage {
 
-import java.util.List;
-
-public class Registro{
     private WebDriver driver;
 
-    public Registro(){
+    public RegistroPage(){
         this.driver = DriverContext.getDriver();
         PageFactory.initElements(this.driver, this);
 
     }
 
     // Elementos Seccion Identificacion Cliente
-    @FindBy(how = How.ID, using = "rolUsuario")
+    @FindBy(id = "rolUsuario")
     private WebElement inputRut;
 
-    @FindBy(how = How.ID, using = "nombre")
+    @FindBy(id = "nombre")
     private WebElement inputNombres;
 
-    @FindBy(how = How.ID, using = "apellidoPaterno")
+    @FindBy(id = "apellidoPaterno")
     private WebElement inputApellidoPaterno;
 
-    @FindBy(how = How.ID, using = "apellidoMaterno")
+    @FindBy(id = "apellidoMaterno")
     private WebElement inputApellidoMaterno;
 
-    @FindBy(how = How.ID, using = "ClasePerfilCliente")
+    @FindBy(id = "ClasePerfilCliente")
     private WebElement listaTipoCliente;
 
-    @FindBy(how = How.ID, using = "alias")
+    @FindBy(id = "alias")
     private WebElement inputAlias;
 
-    @FindBy(how = How.ID, using = "claveUsuario")
+    @FindBy(id = "claveUsuario")
     private WebElement inputClaveSecreta;
 
-    @FindBy(how = How.ID, using = "claveUsuario2")
+    @FindBy(id = "claveUsuario2")
     private WebElement inputRepetirClaveSecreta;
 
-    @FindBy(how = How.ID, using = "imagen-representante")
+    @FindBy(id = "imagen-representante")
     private WebElement imgRepresentante;
 
     // Elementos Sección Cargar de archivos adjuntos
 
-    @FindBy(how = How.ID, using = "documentoIdentidad")
+    @FindBy(id = "documentoIdentidad")
     private WebElement btnCargarCedula;
 
-    @FindBy(how = How.ID, using = "documentoRut")
+    @FindBy(id = "documentoRut")
     private WebElement btnCargarRut;
 
-    @FindBy(how = How.ID, using = "imagen-representante-src")
+    @FindBy(id = "imagen-representante-src")
     private WebElement btnImgRepresentante;
 
-    @FindBy(how = How.ID, using = "documentoUsuario")
+    @FindBy(id = "documentoUsuario")
     private WebElement btnDocumentoUsuario;
 
     // Elementos Sección Ubicación cliente
 
-    @FindBy(how = How.ID, using = "direccionUsuario")
+    @FindBy(id = "direccionUsuario")
     private WebElement inputDireccion;
 
-    @FindBy(how = How.ID, using = "ciudadUsuario")
+    @FindBy(id = "ciudadUsuario")
     private WebElement listaCiudad;
 
-    @FindBy(how = How.XPATH, using = "//div[@class=\"field\"]//child::select[@id=\"ciudadUsuario\"]")
+    @FindBy(xpath = "//div[@class=\"field\"]//child::select[@id=\"ciudadUsuario\"]")
     private WebElement selectCiudad;
 
-    @FindBy(how = How.ID, using = "telefonoUsuario")
+    @FindBy(id = "telefonoUsuario")
     private WebElement inputTelefono1;
 
-    @FindBy(how = How.ID, using = "telefonoOtroUsuario")
+    @FindBy(id = "telefonoOtroUsuario")
     private WebElement inputTelefono2;
 
-    @FindBy(how = How.ID, using = "regionUsuario")
+    @FindBy(id = "regionUsuario")
     private WebElement listaRegion;
 
-    @FindBy(how = How.ID, using = "comunaUsuario")
+    @FindBy(id = "comunaUsuario")
     private WebElement listaComuna;
 
-    @FindBy(how = How.ID, using = "correoUsuario")
+    @FindBy(id = "correoUsuario")
     private WebElement inputCorreo;
 
-    @FindBy(how = How.ID, using = "correoOtroUsuario")
+    @FindBy(id = "correoOtroUsuario")
     private WebElement inputCorreo2;
 
-    @FindBy(how = How.NAME, using = "urlCliente")
+    @FindBy(name = "urlCliente")
     private WebElement inputURLSitio;
 
 

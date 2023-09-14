@@ -3,11 +3,11 @@ package xped.automation.StepsDefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import xped.automation.Pages.Registro;
+import xped.automation.Pages.RegistroPage;
 
 public class RegistroSteps {
 
-    Registro registroPO = new Registro();
+    RegistroPage registroPO = new RegistroPage();
 
     @And("Ingreso datos Identificacion Cliente {},{},{},{}")
     public void ingresoDatosFormularioParteUno(String nombres, String appPaterno, String appMaterno, String rut) {
